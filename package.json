@@ -1,0 +1,24 @@
+{
+  "name": "redis-cache",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "express": "^4.17.1",
+    "fs-extra": "^10.0.0",
+    "jszip": "^3.6.0",
+    "mkdirp-promise": "^5.0.1",
+    "multer": "^1.4.2",
+    "redis": "^3.1.2",
+    "response-time": "^2.3.2",
+    "sort-json-array": "^0.1.7",
+    "zip-a-folder": "^1.0.1"
+  }
+}
