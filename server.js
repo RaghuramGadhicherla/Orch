@@ -232,19 +232,28 @@ app.get('/download', (req, res) => {
   console.log("rootFolder", rootFolder);
   //console.log("Host", req.headers['rootfolder'])
  
-  zipFolder(rootFolder)
-  const timeoutObj = setTimeout(() => {
-    source_dir = `./uploads/${rootFolder}` 
-  //var output = fs.createWriteStream(`${source_dir}/${rootFolder}.zip`);
-  
-  const archive = archiver("zip");
-  console.log("loc", `${source_dir}/${rootFolder}.zip`)
-  res.attachment(`${source_dir}/${rootFolder}.zip`);
+  archive = zipFolder(rootFolder)
   archive.pipe(res)
   archive.finalize();
-  //Specifiy the .zip folder & Download
+  // const timeoutObj = setTimeout(() => {
+  //   source_dir = `./uploads/${rootFolder}` 
+  // var output = fs.createWriteStream(`${source_dir}/${rootFolder}.zip`);
+  
+  // const archive = archiver("zip");
+  // archive.on('error', function(err) {
+  //   res.status(500).send({error: err.message});
+  // });
+  // archive.on('end', function() {
+  //   console.log('Archive wrote %d bytes', archive.pointer());
+  // });
+  // console.log("loc", `${source_dir}/${rootFolder}.zip`)
+  // res.attachment(`${source_dir}/${rootFolder}.zip`);
+  // archive.pipe(res)
+  
+  // archive.finalize();
+  // //Specifiy the .zip folder & Download
  
-  }, 200);
+  // }, 200);
   
   
    
@@ -271,8 +280,8 @@ archive.pipe(output);
 
 // append files from a sub-directory, putting its contents at the root of archive
 archive.directory(source_dir, false)
-archive.finalize();
-
+//archive.finalize();
+return archive
 }
 
 
